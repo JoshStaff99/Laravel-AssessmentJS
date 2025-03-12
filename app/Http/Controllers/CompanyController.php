@@ -9,13 +9,14 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Contracts\Mail\Mailable;
 
 class CompanyController extends Controller
 {
 
     public function index()
     {
-        $companies = Company::paginate(10);
+        $companies = Company::simplePaginate(10);
 
         return view('companies.index', compact('companies'));
     }
@@ -44,42 +45,42 @@ class CompanyController extends Controller
         ]);
 
         
-        // Mail::to($companies)->queue(
-        //     new CompanyPosted($companies)
-        // );
+        //  Mail::to($companies)->queue(
+        //      new CompanyPosted($companies)
+        //  );
     
         return redirect('companies.index');
     }
 
-    public function edit(Company $job)
+    public function edit(Company $companies)
     {
 
-        return view ('jobs.edit', ['job' => $job]);
+        return view ('companies.edit', ['companies' => $companies]);
     }
 
-    // public function update(Company $companies)
-    // {
-    //     Gate::authorize('edit-company', $companies);
+    public function update(Company $companies)
+     {
+         Gate::authorize('edit-company', $companies);
 
-    //     request()->validate([
-    //         'title' => ['required', 'min:3'],
-    //         'salary' => ['required']
-    //     ]);
+         request()->validate([
+             'title' => ['required', 'min:3'],
+             'salary' => ['required']
+         ]);
 
-    //     $companies->update([
-    //         'title' => request('title'),
-    //         'salary' => request('salary'),
-    //     ]);
+         $companies->update([
+             'title' => request('title'),
+             'salary' => request('salary'),
+         ]);
 
-    //     return redirect('/companies' . $companies->id);
-    // }
+         return redirect('/companies' . $companies->id);
+     }
 
-    // public function destroy(Company $companies)
-    // {
-    //     Gate::authorize('edit-company', $companies);
+     public function destroy(Company $companies)
+     {
+         Gate::authorize('edit-company', $companies);
 
-    //     $companies->delete();
+         $companies->delete();
 
-    //     return redirect('/companies');  
-    // }
+         return redirect('/companies');  
+     }
 }
