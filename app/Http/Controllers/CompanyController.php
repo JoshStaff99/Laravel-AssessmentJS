@@ -7,6 +7,7 @@ use App\Mail\CompanyPosted;
 use App\Models\Company;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Contracts\Mail\Mailable;
@@ -16,7 +17,7 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $companies = Company::simplePaginate(10);
+        $companies = Company::Latest()->simplePaginate(10);
 
         return view('companies.index', compact('companies'));
     }
@@ -31,25 +32,35 @@ class CompanyController extends Controller
         return view ('companies.show', ['companies' => $companies]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        request()->validate([
-            'title' => ['required', 'min:3'],
-            'salary' => ['required']
+        // Validate the incoming request data
+        $validatedData = request()->validate([
+            'name' => ['required', 'min:3'],
+            'email' => ['required', 'min:3'],
+            'logo' => ['nullable'],
+            'website' => ['nullable', 'min:3'],
         ]);
-        
+    
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('logos', 'public');  // Store in 'storage/app/public/logos'
+            $validatedData['logo'] = $logoPath;
+        }
+
+        // Use the validated data to create a new company
         $companies = Company::create([
-            'title' => request('title'),
-            'salary' => request('salary'),
-            'employer_id' => 1
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'logo' => $validatedData['logo'],
+            'website' => $validatedData['website'],
         ]);
 
         
-        //  Mail::to($companies)->queue(
-        //      new CompanyPosted($companies)
-        //  );
+        //   Mail::to($companies)(
+        //       new CompanyPosted($companies)
+        //   );
     
-        return redirect('companies.index');
+        return redirect('/companies');
     }
 
     public function edit(Company $companies)

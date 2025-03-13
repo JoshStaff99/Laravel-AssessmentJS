@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyRequest;
 use App\Mail\CompanyPosted;
-use App\Models\Company;
+use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
@@ -15,9 +15,9 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $companies = Company::simplePaginate(10);
+        $employees = Employee::simplePaginate(10);
 
-        return view('companies.index', compact('companies'));
+        return view('employees.index', compact('employees'));
     }
 
     public function create()
@@ -25,9 +25,9 @@ class EmployeeController extends Controller
         return view('companies.create');
     }
 
-    public function show(Company $companies)
+    public function show(Employee $employees)
     {
-        return view ('companies.show', ['companies' => $companies]);
+        return view ('employees.show', ['employees' => $employees]);
     }
 
     public function store()
@@ -37,7 +37,7 @@ class EmployeeController extends Controller
             'salary' => ['required']
         ]);
         
-        $companies = Company::create([
+        $employees = Employee::create([
             'title' => request('title'),
             'salary' => request('salary'),
             'employer_id' => 1
@@ -48,38 +48,38 @@ class EmployeeController extends Controller
         //      new CompanyPosted($companies)
         //  );
     
-        return redirect('companies.index');
+        return redirect('employee.index');
     }
 
-    public function edit(Company $companies)
+    public function edit(Employee $employees)
     {
 
-        return view ('companies.edit', ['companies' => $companies]);
+        return view ('employees.edit', ['employees' => $employees]);
     }
 
-    public function update(Company $companies)
+    public function update(Employee $employees)
      {
-         Gate::authorize('edit-company', $companies);
+         Gate::authorize('edit-employee', $employees);
 
          request()->validate([
              'title' => ['required', 'min:3'],
              'salary' => ['required']
          ]);
 
-         $companies->update([
+         $employees->update([
              'title' => request('title'),
              'salary' => request('salary'),
          ]);
 
-         return redirect('/companies' . $companies->id);
+         return redirect('/employees' . $employees->id);
      }
 
-     public function destroy(Company $companies)
+     public function destroy(Employee $employees)
      {
-         Gate::authorize('edit-company', $companies);
+         Gate::authorize('edit-employee', $employees);
 
-         $companies->delete();
+         $employees->delete();
 
-         return redirect('/companies');  
+         return redirect('/employees');  
      }
 }

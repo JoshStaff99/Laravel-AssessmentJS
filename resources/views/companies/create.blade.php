@@ -1,9 +1,9 @@
 <x-layout>
     <x-slot:heading>
-        Create Job
+        Add a new company
     </x-slot:heading>
 
-    <form method="POST" action="/jobs">
+    <form method="POST" action="/companies">
         @csrf
 
     <div class="space-y-12">
@@ -15,9 +15,9 @@
             <x-form-field>
             <x-form-label for="title">Company name</x-form-label>
             <div class="mt-2">
-                <x-form-input name="title" id="title" placeholder="CEO" required />
+                <x-form-input name="name" id="name" placeholder="Company Name..." required />
 
-                <x-form-error name="title" />
+                <x-form-error name="name" />
             </div>
             </x-form-field>
         </div>
@@ -26,9 +26,31 @@
             <x-form-field>
             <x-form-label for="Salary">Company Email</x-form-label>
             <div class="mt-2">
-                <x-form-input name="salary" id="salary" placeholder="$50,000 USD" required />
+                <x-form-input name="email" id="email" placeholder="Company Email..." required />
 
-                <x-form-error name="salary" />
+                <x-form-error name="email" />
+            </div>
+            </x-form-field>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <x-form-field>
+            <x-form-label for="Salary">Company Logo</x-form-label>
+            <div class="mt-2">
+                <x-form-input name="logo" id="logo" type="file" required />
+
+                <x-form-error name="logo" />
+            </div>
+            </x-form-field>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+            <x-form-field>
+            <x-form-label for="Salary">Company Website</x-form-label>
+            <div class="mt-2">
+                <x-form-input name="website" id="website" placeholder="Company Website..." required />
+
+                <x-form-error name="website" />
             </div>
             </x-form-field>
         </div>
