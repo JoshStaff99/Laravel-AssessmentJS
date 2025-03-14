@@ -27,9 +27,9 @@ class CompanyController extends Controller
         return view('companies.create');
     }
 
-    public function show(Company $companies)
+    public function show(Company $company)
     {
-        return view ('companies.show', ['companies' => $companies]);
+        return view ('companies.show', ['company' => $company]);
     }
 
     public function store(Request $request)
@@ -63,35 +63,40 @@ class CompanyController extends Controller
         return redirect('/companies');
     }
 
-    public function edit(Company $companies)
+    public function edit(Company $company)
     {
 
-        return view ('companies.edit', ['companies' => $companies]);
+        return view ('companies.edit', ['company' => $company]);
     }
 
-    public function update(Company $companies)
+    public function update(Company $company)
      {
-         Gate::authorize('edit-company', $companies);
+        // Gate::authorize('edit-company', $companies);
 
-         request()->validate([
-             'title' => ['required', 'min:3'],
-             'salary' => ['required']
-         ]);
+        $validatedData = request()->validate([
+        'name' => ['required', 'min:3'],
+        'email' => ['required', 'min:3'],
+        'logo' => ['nullable'],
+        'website' => ['nullable', 'min:3'],
+        ]);
 
-         $companies->update([
-             'title' => request('title'),
-             'salary' => request('salary'),
-         ]);
+        $company->update([
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+        'logo' => $validatedData['logo'],
+        'website' => $validatedData['website'],
+        ]);
 
-         return redirect('/companies' . $companies->id);
+        return redirect()->route('companies.show', ['company' => $company])->with('success', 'Company updated successfully!');
+        //return redirect('companies.show', ['company' => $company]);
      }
 
-     public function destroy(Company $companies)
+     public function destroy(Company $company)
      {
-         Gate::authorize('edit-company', $companies);
+        //Gate::authorize('edit-company', $companies);
 
-         $companies->delete();
+        $company->delete();
 
-         return redirect('/companies');  
+        return redirect('/companies');  
      }
 }
