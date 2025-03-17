@@ -29,7 +29,11 @@ class CompanyController extends Controller
 
     public function show(Company $company)
     {
-        return view ('companies.show', ['company' => $company]);
+        // Get the employees associated with the company
+        $employees = $company->employees; 
+
+        // Pass the company and employees to the view
+        return view('companies.show', compact('company', 'employees'));
     }
 
     public function store(Request $request)
@@ -43,8 +47,8 @@ class CompanyController extends Controller
         ]);
     
         if ($request->hasFile('logo')) {
-            $logoPath = $request->file('logo')->store('logos', 'public');  // Store in 'storage/app/public/logos'
-            $validatedData['logo'] = $logoPath;
+            $validatedData['logo'] = $request->file('logo')->store('logos', 'public');  // Store in 'storage/app/public/logos'
+            //= $request->file('logo')->store('logos', 'public');  // Store in 'storage/app/public/logos'
         }
 
         // Use the validated data to create a new company
@@ -54,11 +58,6 @@ class CompanyController extends Controller
             'logo' => $validatedData['logo'],
             'website' => $validatedData['website'],
         ]);
-
-        
-        //   Mail::to($companies)(
-        //       new CompanyPosted($companies)
-        //   );
     
         return redirect('/companies');
     }

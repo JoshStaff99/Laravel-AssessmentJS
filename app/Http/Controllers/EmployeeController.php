@@ -15,70 +15,85 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::simplePaginate(10);
+        $employees = Employee::Latest()->simplePaginate(10);
 
         return view('employees.index', compact('employees'));
     }
 
     public function create()
     {
-        return view('companies.create');
+        return view('employees.create');
     }
 
-    public function show(Employee $employees)
+    public function show(Employee $employee)
     {
-        return view ('employees.show', ['employees' => $employees]);
+        // Get the company associated with the employee
+        $company = $employee->company; 
+
+        // Pass the company and employees to the view
+        return view('employees.show', compact('employee'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        request()->validate([
-            'title' => ['required', 'min:3'],
-            'salary' => ['required']
+        // Validate the incoming request data
+        $validatedData = request()->validate([
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'company' => ['required'],
+            'email' => ['nullable'],
+            'phone_number' => ['nullable'],
         ]);
-        
+
+        // Use the validated data to create a new employee
         $employees = Employee::create([
-            'title' => request('title'),
-            'salary' => request('salary'),
-            'employer_id' => 1
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+            'company' => $validatedData['company'],
+            'email' => $validatedData['email'],
+            'phone_number' => $validatedData['phone_number'],
         ]);
-
-        
-        //  Mail::to($companies)->queue(
-        //      new CompanyPosted($companies)
-        //  );
     
-        return redirect('employee.index');
+        return redirect('/employees');
     }
 
-    public function edit(Employee $employees)
+    public function edit(Employee $employee)
     {
 
-        return view ('employees.edit', ['employees' => $employees]);
+        return view ('employees.edit', ['employee' => $employee]);
     }
 
-    public function update(Employee $employees)
+    public function update(Employee $employee)
      {
-         Gate::authorize('edit-employee', $employees);
+        //Gate::authorize('edit-employee', $employees);
 
-         request()->validate([
-             'title' => ['required', 'min:3'],
-             'salary' => ['required']
-         ]);
+        // Validate the incoming request data
+        $validatedData = request()->validate([
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'company' => ['required'],
+            'email' => ['nullable'],
+            'phone_number' => ['nullable'],
+        ]);
 
-         $employees->update([
-             'title' => request('title'),
-             'salary' => request('salary'),
-         ]);
+        // Use the validated data to create a new employee
+        $employee->update([
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+            'company' => $validatedData['company'],
+            'email' => $validatedData['email'],
+            'phone_number' => $validatedData['phone_number'],
+        ]);
 
-         return redirect('/employees' . $employees->id);
+        return redirect()->route('employees.show', ['employee' => $employee])->with('success', 'Employee updated successfully!');
+        //return redirect('/employees' . $employees->id);
      }
 
-     public function destroy(Employee $employees)
+     public function destroy(Employee $employee)
      {
-         Gate::authorize('edit-employee', $employees);
+         //Gate::authorize('edit-employee', $employees);
 
-         $employees->delete();
+         $employee->delete();
 
          return redirect('/employees');  
      }

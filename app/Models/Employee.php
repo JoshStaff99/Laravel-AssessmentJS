@@ -9,10 +9,10 @@ class Employee extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'password', 'company_id', 'email', 'phone_number'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'company', 'email', 'phone_number'];
 
     public function company()
         {
-        return $this->belongsTo(Company::class);
+            return $this->belongsTo(Company::class, 'company');
         }
 }
