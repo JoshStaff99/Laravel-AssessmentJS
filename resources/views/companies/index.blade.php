@@ -9,7 +9,7 @@
                 <div class="font-bold text-blue-500 text-sm">{{ $company->name }}</div>
 
                 <div>
-                    <img class="text-laracasts" src='{{ $company->logo }}' />
+                    <img class="text-laracasts" src="{{ asset($company->logo) }}" alt="Company Logo" />
                 </div>
             </a>
         @endforeach

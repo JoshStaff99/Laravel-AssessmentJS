@@ -15,7 +15,7 @@
 
     <div>
     <h2 class="font-bold text-lg mb-5">Company Logo:</h2>
-        <img class="text-laracasts" src='{{ $company->logo }}' />
+        <img class="text-laracasts" src='{{ asset($company->logo) }}' />
     </div>
 
         <p class="mt-6 mb-10">

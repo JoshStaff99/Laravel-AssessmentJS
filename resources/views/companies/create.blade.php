@@ -13,7 +13,7 @@
 
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <x-form-field>
-            <x-form-label for="title">Company name</x-form-label>
+            <x-form-label for="name">Company name</x-form-label>
             <div class="mt-2">
                 <x-form-input name="name" id="name" placeholder="Company Name..." required />
 
@@ -24,7 +24,7 @@
 
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <x-form-field>
-            <x-form-label for="Salary">Company Email</x-form-label>
+            <x-form-label for="email">Company Email</x-form-label>
             <div class="mt-2">
                 <x-form-input name="email" id="email" placeholder="Company Email..." required />
 
@@ -35,7 +35,7 @@
 
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <x-form-field>
-            <x-form-label for="Salary">Company Logo</x-form-label>
+            <x-form-label for="logo">Company Logo</x-form-label>
             <div class="mt-2">
                 <x-form-input name="logo" id="logo" type="file" required />
 
@@ -46,7 +46,7 @@
 
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <x-form-field>
-            <x-form-label for="Salary">Company Website</x-form-label>
+            <x-form-label for="website">Company Website</x-form-label>
             <div class="mt-2">
                 <x-form-input name="website" id="website" placeholder="Company Website..." required />
 

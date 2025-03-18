@@ -39,25 +39,36 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         // Validate the incoming request data
-        $validatedData = request()->validate([
+        $validatedData = $request->validate([
             'name' => ['required', 'min:3'],
             'email' => ['required', 'min:3'],
             'logo' => ['nullable'],
             'website' => ['nullable', 'min:3'],
         ]);
     
+        // if ($request->hasFile('logo')) {
+        //     $validatedData['logo'] = $request->file('logo')->store('logos', 'public');  // Store in 'storage/app/public/logos'
+        //     //= $request->file('logo')->store('logos', 'public');  // Store in 'storage/app/public/logos'
+        // }
+
+            // If logo file is present
         if ($request->hasFile('logo')) {
-            $validatedData['logo'] = $request->file('logo')->store('logos', 'public');  // Store in 'storage/app/public/logos'
-            //= $request->file('logo')->store('logos', 'public');  // Store in 'storage/app/public/logos'
+            // Store the logo in the 'public/logos' directory
+            $logoPath = $request->file('logo')->store('logos', 'public');
+            
+            // Now, store the path relative to the public folder
+            $validatedData['logo'] = 'storage/logos' . $logoPath;  // Save this in the database
         }
 
         // Use the validated data to create a new company
-        $companies = Company::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'logo' => $validatedData['logo'],
-            'website' => $validatedData['website'],
-        ]);
+        // $companies = Company::create([
+        //     'name' => $validatedData['name'],
+        //     'email' => $validatedData['email'],
+        //     'logo' => $validatedData['logo'],
+        //     'website' => $validatedData['website'],
+        // ]);
+
+        Company::create($validatedData);
     
         return redirect('/companies');
     }
