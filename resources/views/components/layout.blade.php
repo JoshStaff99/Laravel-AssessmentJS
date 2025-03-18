@@ -30,7 +30,7 @@
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="shrink-0">
-            <img class="size-8" src="https://laracasts.com/images/logo/logo-triangle.svg" alt="Your Company">
+            <h1 class="w-5 h-6 fill-current text-white"> J S </h1>
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">

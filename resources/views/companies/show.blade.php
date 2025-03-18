@@ -29,7 +29,7 @@
         @else
             <div class="space-y-4">
                 @foreach ($employees as $employee)
-                    <a href="/employees/{{ $employee->id }}" class="block px-4 py-6 border border-gray-200 rounded-lg">
+                    <a href="/employees/{{ $employee->id }}" class="block px-4 py-6 border border-gray-200 rounded-lg hover:border-blue-800 group transition-colors duration-300">
                         <div>
                             <h2 class="font-bold text-lg mb-5">Employee Name: {{ $employee->first_name }} {{ $employee->last_name }}</h2>
                             <h2 class="font-bold text-lg mb-5">Employee Email: {{ $employee->email }}</h2>
