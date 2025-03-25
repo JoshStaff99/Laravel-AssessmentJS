@@ -57,7 +57,7 @@ class CompanyController extends Controller
             $logoPath = $request->file('logo')->store('logos', 'public');
             
             // Now, store the path relative to the public folder
-            $validatedData['logo'] = 'storage/logos' . $logoPath;  // Save this in the database
+            $validatedData['logo'] = 'storage/' . $logoPath;  // Save this in the database
         }
 
         // Use the validated data to create a new company

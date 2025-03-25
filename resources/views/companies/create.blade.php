@@ -3,7 +3,7 @@
         Add a new company
     </x-slot:heading>
 
-    <form method="POST" action="/companies">
+    <form method="POST" action="/companies" enctype="multipart/form-data">
         @csrf
 
     <div class="space-y-12">

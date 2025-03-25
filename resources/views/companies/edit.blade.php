@@ -3,7 +3,7 @@
         Edit Company details for: {{ $company->name }}
     </x-slot:heading>
 
-    <form method="POST" action="/companies/{{ $company->id }}">
+    <form method="POST" action="/companies/{{ $company->id }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
