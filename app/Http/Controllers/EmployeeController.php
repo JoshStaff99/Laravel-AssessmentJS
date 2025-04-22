@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CompanyRequest;
 use App\Mail\CompanyPosted;
 use App\Models\Employee;
+use App\Models\Company;
 use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
@@ -22,7 +23,8 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        return view('employees.create');
+        $companies = Company::all();
+        return view('employees.create', compact('companies'));
     }
 
     public function show(Employee $employee)

@@ -13,7 +13,7 @@
                 <div class="sm:col-span-4">
                     <label for="title" class="block text-sm/6 font-medium text-gray-900">Employee First Name</label>
                     <div class="mt-2">
-                        <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                        <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                             <input 
                             type="text" 
                             name="first_name" 
@@ -36,7 +36,7 @@
                 <div class="sm:col-span-4">
                     <label for="title" class="block text-sm/6 font-medium text-gray-900">Employee Last Name</label>
                     <div class="mt-2">
-                        <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                        <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                             <input 
                             type="text" 
                             name="last_name" 
@@ -58,7 +58,7 @@
             <div class="sm:col-span-4">
             <label for="salary" class="block text-sm/6 font-medium text-gray-900">Company ID</label>
             <div class="mt-2">
-                <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                 <input 
                 type="integer" 
                 name="company" 
@@ -81,7 +81,7 @@
             <div class="sm:col-span-4">
             <label for="salary" class="block text-sm/6 font-medium text-gray-900">Employee Email</label>
             <div class="mt-2">
-                <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                 <input 
                 type="text" 
                 name="email" 
@@ -104,7 +104,7 @@
             <div class="sm:col-span-4">
             <label for="salary" class="block text-sm/6 font-medium text-gray-900">Employee Phone Number</label>
             <div class="mt-2">
-                <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                 <input 
                 type="int" 
                 name="phone_number" 

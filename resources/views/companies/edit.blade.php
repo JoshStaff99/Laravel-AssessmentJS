@@ -13,7 +13,7 @@
                 <div class="sm:col-span-4">
                     <label for="title" class="block text-sm/6 font-medium text-gray-900">Company Name</label>
                     <div class="mt-2">
-                        <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                        <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                             <input 
                             type="text" 
                             name="name" 
@@ -35,7 +35,7 @@
             <div class="sm:col-span-4">
             <label for="salary" class="block text-sm/6 font-medium text-gray-900">Company Email</label>
             <div class="mt-2">
-                <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                 <input 
                 type="text" 
                 name="email" 
@@ -58,7 +58,7 @@
             <div class="sm:col-span-4">
             <label for="salary" class="block text-sm/6 font-medium text-gray-900">Company Logo</label>
             <div class="mt-2">
-                <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                 <input 
                 type="file" 
                 name="logo" 
@@ -81,7 +81,7 @@
             <div class="sm:col-span-4">
             <label for="salary" class="block text-sm/6 font-medium text-gray-900">Company Website</label>
             <div class="mt-2">
-                <div class="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
+                <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                 <input 
                 type="text" 
                 name="website" 

@@ -35,12 +35,21 @@
 
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <x-form-field>
-            <x-form-label for="first_name">Employee Company ID</x-form-label>
-            <div class="mt-2">
-                <x-form-input name="company" id="company" placeholder="Company ID..." required />
+                <x-form-label for="company">Employee Company ID</x-form-label>
+                <div class="mt-2">
+                    <select name="company" id="company" required
+                        class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm">
+                        <option value="" disabled selected>Select a company...</option>
+                        @foreach ($companies as $company)
+                            <option value="{{ $company->id }}"
+                                {{ old('company') == $company->id ? 'selected' : '' }}>
+                                {{ $company->name }} (ID: {{ $company->id }})
+                            </option>
+                        @endforeach
+                    </select>
 
-                <x-form-error name="company" />
-            </div>
+                    <x-form-error name="company" />
+                </div>
             </x-form-field>
         </div>
 
