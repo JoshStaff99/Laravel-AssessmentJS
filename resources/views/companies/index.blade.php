@@ -24,12 +24,12 @@
                         </p>
 
                         <div class="flex items-center">
-                            <button form="delete-form" class="text-red-500 text-sm font-bold">Delete</button>
+                            <button form="delete-form-{{ $company->id }}" class="text-red-500 text-sm font-bold" onclick="return confirm('Are you sure you want to delete this company?')">Delete</button>
                         </div>
                     </div>
                 </div>
 
-                <form method="POST" action="/companies/{{ $company->id }}" id="delete-form" class="hidden">
+                <form method="POST" action="/companies/{{ $company->id }}" id="delete-form-{{ $company->id }}" class="hidden">
                     @csrf
                     @method('DELETE')
                 </form>

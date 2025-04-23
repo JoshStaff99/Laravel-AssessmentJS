@@ -16,7 +16,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-        $employees = Employee::Latest()->simplePaginate(10);
+        $employees = Employee::Latest()->Paginate(10);
 
         return view('employees.index', compact('employees'));
     }
@@ -61,8 +61,8 @@ class EmployeeController extends Controller
 
     public function edit(Employee $employee)
     {
-
-        return view ('employees.edit', ['employee' => $employee]);
+        $companies = Company::all();
+        return view ('employees.edit', ['employee' => $employee], compact('companies'));
     }
 
     public function update(Employee $employee)
