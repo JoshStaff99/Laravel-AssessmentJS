@@ -18,7 +18,7 @@
                             type="text" 
                             name="name" 
                             id="name" 
-                            class="block min-w-0 grow py-1.5 pr-3 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" 
+                            class="block min-w-0 grow py-1.5 pr-3 border border-black px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" 
                             placeholder="{{ $company->name }}"
                             value="{{ $company->name }}"
                             required>
@@ -33,14 +33,14 @@
 
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="sm:col-span-4">
-            <label for="salary" class="block text-sm/6 font-medium text-gray-900">Company Email</label>
+            <label for="email" class="block text-sm/6 font-medium text-gray-900">Company Email</label>
             <div class="mt-2">
                 <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                 <input 
                 type="text" 
                 name="email" 
                 id="email" 
-                class="block min-w-0 grow py-1.5 pr-3 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" 
+                class="block min-w-0 grow py-1.5 pr-3 border border-black px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" 
                 placeholder="{{ $company->email }}" 
                 value="{{ $company->email }}"
                 required>
@@ -56,14 +56,14 @@
 
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="sm:col-span-4">
-            <label for="salary" class="block text-sm/6 font-medium text-gray-900">Company Logo</label>
+            <label for="logo" class="block text-sm/6 font-medium text-gray-900">Company Logo</label>
             <div class="mt-2">
                 <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                 <input 
                 type="file" 
                 name="logo" 
                 id="logo" 
-                class="block min-w-0 grow py-1.5 pr-3 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" 
+                class="block min-w-0 grow border border-black py-1.5 pr-3 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" 
                 placeholder="{{ $company->logo }}" 
                 value="{{ $company->logo }}"
                 required>
@@ -79,14 +79,14 @@
 
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div class="sm:col-span-4">
-            <label for="salary" class="block text-sm/6 font-medium text-gray-900">Company Website</label>
+            <label for="website" class="block text-sm/6 font-medium text-gray-900">Company Website</label>
             <div class="mt-2">
                 <div class="flex items-center rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
                 <input 
                 type="text" 
                 name="website" 
                 id="website" 
-                class="block min-w-0 grow py-1.5 pr-3 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" 
+                class="block min-w-0 grow py-1.5 pr-3 border border-black px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" 
                 placeholder="{{ $company->website }}" 
                 value="{{ $company->website }}"
                 required>
