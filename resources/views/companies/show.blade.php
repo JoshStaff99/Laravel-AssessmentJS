@@ -18,13 +18,10 @@
         <img class="text-laracasts" src='{{ asset($company->logo) }}' />
     </div>
 
-    <p class="mt-6 mb-10">
-        <x-button href="/companies/{{ $company->id }}/edit">Update Company</x-button> 
-    </p>
-
-    <p class="mt-6 mb-10">
-        <x-button href="/companies">Back to Listing</x-button> 
-    </p> 
+    <div class="mt-6 mb-10 flex flex-col md:flex-row gap-4">
+        <x-button href="/companies/{{ $company->id }}/edit">Update Company</x-button>
+        <x-button href="/companies">Back to Listing</x-button>
+    </div>
 
     <h1 class="font-bold text-lg mb-5">Company Employees:</h1>
 
@@ -61,6 +58,22 @@
                     <div class="flex-1 text-center px-3 py-2 mb-5">
                         <span class="md:hidden block font-semibold">Employee Phone Number:</span>
                         <h2 class="text-lg">{{ $employee->phone_number }}</h2>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex items-center justify-between gap-x-6">
+                    <div>
+                        <x-button href="/employees/{{ $employee->id }}">View Employee Details</x-button> 
+                    </div>
+
+                    <div class="flex items-center gap-x-6">
+                        <p class="">
+                            <x-button href="/employees/{{ $employee->id }}/edit">Edit</x-button> 
+                        </p>
+
+                        <div class="flex items-center">
+                            <button form="delete-form-{{ $employee->id }}" class="text-red-500 text-sm font-bold" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>

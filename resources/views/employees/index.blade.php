@@ -60,7 +60,7 @@
             </div>
         @endforeach
     </div>
-    <div class="mt-10">
+    <div class="px-4 py-6 border border-gray-200 hover:border-blue-800 group transition-colors duration-300">
         {{ $employees->links() }}
     </div>
 </x-layout>

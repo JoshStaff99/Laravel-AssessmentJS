@@ -6,8 +6,8 @@
     <div class="hidden md:block min-h-full">
         <div class="mx-auto max-w-7xl">
             <div class="flex h-16 items-center bg-gray-800 border-y border-white">
-                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Company ID</h2>
-                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Company Logo</h2>
+                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">ID</h2>
+                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Logo</h2>
                 <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Company Name</h2>
                 <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Created At</h2>
             </div>
@@ -48,9 +48,8 @@
                 </form>
             </div>
         @endforeach
-
     </div>
-    <div class="mt-10">
+    <div class="px-4 py-6 border border-gray-200 hover:border-blue-800 group transition-colors duration-300">
         {{ $companies->links() }}
     </div>
 </x-layout>
