@@ -13,5 +13,9 @@
 
     <p class="mt-6 mb-10">
         <x-button href="/employees/{{ $employee->id }}/edit">Update Employee</x-button> 
-    </p>   
+    </p>  
+    
+    <p class="mt-6 mb-10">
+        <x-button href="/employees">Back to Listing</x-button> 
+    </p> 
 </x-layout>

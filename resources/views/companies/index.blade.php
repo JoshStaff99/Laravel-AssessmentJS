@@ -4,14 +4,14 @@
     </x-slot:heading>
 
     <div class="hidden md:block min-h-full">
-            <div class="mx-auto max-w-7xl">
-                <div class="flex h-16 items-center bg-gray-800 border-y border-white">
-                    <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Company ID</h2>
-                    <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Company Logo</h2>
-                    <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Company Name</h2>
-                    <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Created At</h2>
-                </div>
+        <div class="mx-auto max-w-7xl">
+            <div class="flex h-16 items-center bg-gray-800 border-y border-white">
+                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Company ID</h2>
+                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Company Logo</h2>
+                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Company Name</h2>
+                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Created At</h2>
             </div>
+        </div>
     </div>
     <div class="grid grid-cols-1">
         @foreach ($companies as $company)
