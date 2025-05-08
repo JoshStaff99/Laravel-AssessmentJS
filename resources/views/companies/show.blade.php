@@ -18,7 +18,7 @@
         <img class="text-laracasts" src='{{ asset($company->logo) }}' />
     </div>
 
-    <div class="mt-6 mb-10 flex flex-col md:flex-row gap-4">
+    <div class="mt-6 mb-10 flex md:flex-row gap-4">
         <x-button href="/companies/{{ $company->id }}/edit">Update Company</x-button>
         <x-button href="/companies">Back to Listing</x-button>
     </div>
