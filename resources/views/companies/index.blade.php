@@ -19,7 +19,19 @@
                 <div class="block md:flex items-center border-gray-300">
                     <div class="flex-1 text-center px-3 py-2 text-sm text-blue-500 font-medium"><h2 class="md:hidden px-3">Company Id:</h2>{{ $company->id }}</div>
                     <div class="flex-1 text-center px-3 py-2">
-                        <img src="{{ asset($company->logo) }}" alt="Company Logo" class="mx-auto h-20">
+                        @if ($company->logo && $company->logo !== 'logos/placeholder.svg' && $company->logo !== 'logos/100.png')
+                            <img 
+                                src="{{ asset($company->logo) }}" 
+                                alt="Company Logo" 
+                                class="mx-auto h-20"
+                            >
+                        @else
+                            <img 
+                                src="{{ asset('logos/placeholder.svg') }}" 
+                                alt="Placeholder Logo" 
+                                class="mx-auto h-20"
+                            >
+                        @endif
                     </div>
                     <div class="flex-1 text-center px-3 py-2 text-sm text-blue-500 font-medium"><h2 class="md:hidden px-3">Company Name:</h2>{{ $company->name }}</div>
                     <div class="flex-1 text-center px-3 py-2 text-sm text-blue-500 font-medium"><h2 class="md:hidden px-3">Created At:</h2>{{ $company->created_at->format('Y-m-d') }}</div>

@@ -65,8 +65,7 @@
                 id="logo" 
                 class="block min-w-0 grow border border-black py-1.5 pr-3 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" 
                 placeholder="{{ $company->logo }}" 
-                value="{{ $company->logo }}"
-                required>
+                value="{{ $company->logo }}">
                 </div>
 
                 

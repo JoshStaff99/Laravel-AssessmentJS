@@ -37,7 +37,7 @@
             <x-form-field>
             <x-form-label for="logo">Company Logo</x-form-label>
             <div class="mt-2">
-                <x-form-input name="logo" id="logo" type="file" required />
+                <x-form-input name="logo" id="logo" type="file" />
 
                 <x-form-error name="logo" />
             </div>

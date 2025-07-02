@@ -15,7 +15,19 @@
 
     <div>
     <h2 class="font-bold text-lg mb-5">Company Logo:</h2>
-        <img class="text-laracasts" src='{{ asset($company->logo) }}' />
+        @if ($company->logo && $company->logo !== 'logos/placeholder.svg' && $company->logo !== 'logos/100.png')
+            <img 
+                src="{{ asset($company->logo) }}" 
+                alt="Company Logo" 
+                class="text-laracasts"
+            >
+        @else
+            <img 
+                src="{{ asset('logos/placeholder.svg') }}" 
+                alt="Placeholder Logo" 
+                class="text-laracasts"
+            >
+        @endif
     </div>
 
     <div class="mt-6 mb-10 flex md:flex-row gap-4">

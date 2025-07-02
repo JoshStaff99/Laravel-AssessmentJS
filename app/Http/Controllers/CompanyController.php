@@ -46,13 +46,16 @@ class CompanyController extends Controller
             'website' => ['nullable', 'min:3'],
         ]);
 
-            // If logo file is present
+        // If logo file is present
         if ($request->hasFile('logo')) {
             // Store the logo in the 'public/logos' directory
             $logoPath = $request->file('logo')->store('logos', 'public');
             
             // Now, store the path relative to the public folder
             $validatedData['logo'] = 'storage/' . $logoPath;  // Save this in the database
+        } else {
+        // Use a placeholder image if no logo is uploaded
+        $validatedData['logo'] = 'logos/100.png';
         }
 
         Company::create($validatedData);
