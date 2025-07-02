@@ -26,7 +26,7 @@
 
 <div class="min-h-full">
   <nav class="bg-gray-800">
-    <div class="mx-auto max-w-7xl px-4">
+    <div class="mx-auto max-w-7xl px-4 hidden md:block">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="shrink-0">
@@ -59,12 +59,28 @@
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="md:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Home</a>
-        <a href="/companies" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Companies</a>
-        <a href="/employees" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Employees</a>
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 md:hidden" >
+      <div class="shrink-0">
+        <h1 class="w-5 h-6 fill-current text-white"> J S </h1>
+      </div>
+      <button data-collapse-toggle="navbar-hamburger" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+      </button>
+      <div class="hidden w-full" id="navbar-hamburger">
+        <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+          <li>
+            <a href="/" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
+          </li>
+          <li>
+            <a href="/companies" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Companies</a>
+          </li>
+          <li>
+            <a href="/employees" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Employees</a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -90,5 +106,16 @@
   </main>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const button = document.querySelector('[data-collapse-toggle="navbar-hamburger"]');
+        const menu = document.getElementById('navbar-hamburger');
+        if (button && menu) {
+            button.addEventListener('click', function () {
+                menu.classList.toggle('hidden');
+            });
+        }
+    });
+</script>
 </body>
 </html>
