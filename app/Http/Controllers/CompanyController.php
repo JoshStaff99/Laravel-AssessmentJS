@@ -45,11 +45,6 @@ class CompanyController extends Controller
             'logo' => ['nullable'],
             'website' => ['nullable', 'min:3'],
         ]);
-    
-        // if ($request->hasFile('logo')) {
-        //     $validatedData['logo'] = $request->file('logo')->store('logos', 'public');  // Store in 'storage/app/public/logos'
-        //     //= $request->file('logo')->store('logos', 'public');  // Store in 'storage/app/public/logos'
-        // }
 
             // If logo file is present
         if ($request->hasFile('logo')) {
@@ -59,14 +54,6 @@ class CompanyController extends Controller
             // Now, store the path relative to the public folder
             $validatedData['logo'] = 'storage/' . $logoPath;  // Save this in the database
         }
-
-        // Use the validated data to create a new company
-        // $companies = Company::create([
-        //     'name' => $validatedData['name'],
-        //     'email' => $validatedData['email'],
-        //     'logo' => $validatedData['logo'],
-        //     'website' => $validatedData['website'],
-        // ]);
 
         Company::create($validatedData);
     
@@ -79,27 +66,29 @@ class CompanyController extends Controller
         return view ('companies.edit', ['company' => $company]);
     }
 
-    public function update(Company $company)
-     {
-        // Gate::authorize('edit-company', $companies);
-
-        $validatedData = request()->validate([
-        'name' => ['required', 'min:3'],
-        'email' => ['required', 'min:3'],
-        'logo' => ['nullable'],
-        'website' => ['nullable', 'min:3'],
+    public function update(Company $company, Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => ['required', 'min:3'],
+            'email' => ['required', 'min:3'],
+            'logo' => ['nullable'],
+            'website' => ['nullable', 'min:3'],
         ]);
 
-        $company->update([
-        'name' => $validatedData['name'],
-        'email' => $validatedData['email'],
-        'logo' => $validatedData['logo'],
-        'website' => $validatedData['website'],
-        ]);
+        // If logo file is present
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('logos', 'public');
+            $validatedData['logo'] = 'storage/' . $logoPath;
+        } else {
+            // Prevent overwriting logo with null if not uploading a new one
+            unset($validatedData['logo']);
+        }
 
-        return redirect()->route('companies.show', ['company' => $company])->with('success', 'Company updated successfully!');
-        //return redirect('companies.show', ['company' => $company]);
-     }
+        $company->update($validatedData);
+
+        return redirect()->route('companies.show', ['company' => $company])
+            ->with('success', 'Company updated successfully!');
+    }
 
      public function destroy(Company $company)
      {

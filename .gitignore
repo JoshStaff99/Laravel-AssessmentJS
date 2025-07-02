@@ -2,6 +2,7 @@
 /node_modules
 /public/build
 /public/hot
+/public/logos
 /public/storage
 /storage/*.key
 /storage/pail
@@ -21,3 +22,6 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+!private/
+*.sqlite*
+!/public/logos/
