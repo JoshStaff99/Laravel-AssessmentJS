@@ -3,64 +3,58 @@
         Employees Listings
     </x-slot:heading>
 
-    <div class="hidden md:block min-h-full">
-        <div class="mx-auto max-w-7xl">
-            <div class="flex h-16 items-center bg-gray-800 border-y border-white">
-                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">ID</h2>
-                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Full Name</h2>
-                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Email</h2>
-                <h2 class="flex-1 text-white text-center px-3 py-2 text-sm font-medium">Phone Number</h2>
-            </div>
-        </div>
+    <div class="relative overflow-x-auto mt-3">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Employee Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Employee ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Employee Email
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Employee Phone Number
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach ($employees as $employee)
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ $employee->first_name }} {{ $employee->last_name }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ $employee->id }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $employee->email }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $employee->phone_number }}
+                    </td>
+                    <td class="px-6 py-4 flex flex-col gap-2">
+                        <x-button href="/employees/{{ $employee->id }}">View</x-button>
+                        <x-button href="/employees/{{ $employee->id }}/edit">Edit</x-button>
+                        <button form="delete-form-{{ $employee->id }}" class="text-red-500 text-sm font-bold bg-red-200 hover:bg-red-600 rounded-md relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 rounded-md" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</button> 
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 px-6 py-4 text-center">
+                        {{ $employees->links() }}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
-    <div class="grid grid-cols-1">
-        @foreach ($employees as $employee)
-            <div class="block px-4 py-6 border border-gray-200 hover:border-blue-800 group transition-colors duration-300">
-                <div class="block md:flex items-center">
-                    <div class="flex-1 text-center px-3 py-2 mb-5">
-                        <span class="md:hidden block font-semibold">Employee ID:</span>
-                        <h2 class="text-lg">{{ $employee->id }}</h2>
-                    </div>
-                    <div class="flex-1 text-center px-3 py-2 mb-5">
-                        <span class="md:hidden block font-semibold">Employee Name:</span>
-                        <h2 class="text-lg">{{ $employee->first_name }} {{ $employee->last_name }}</h2>
-                    </div>
-                    <div class="flex-1 text-center px-3 py-2 mb-5">
-                        <span class="md:hidden block font-semibold">Employee Email:</span>
-                        <h2 class="text-lg">{{ $employee->email }}</h2>
-                    </div>
-                    <div class="flex-1 text-center px-3 py-2 mb-5">
-                        <span class="md:hidden block font-semibold">Employee Phone Number:</span>
-                        <h2 class="text-lg">{{ $employee->phone_number }}</h2>
-                    </div>
-                </div>
 
-                <div>
-                    <div class="mt-6 flex items-center justify-between gap-x-6">
-                    <div>
-                        <x-button href="/employees/{{ $employee->id }}">View Employee Details</x-button> 
-                    </div>
-
-                    <div class="flex items-center gap-x-6">
-                        <p class="">
-                            <x-button href="/employees/{{ $employee->id }}/edit">Edit</x-button> 
-                        </p>
-
-                        <div class="flex items-center">
-                            <button form="delete-form-{{ $employee->id }}" class="text-red-500 text-sm font-bold" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</button>
-                        </div>
-                    </div>
-                </div>
-
-                <form method="POST" action="/employees/{{ $employee->id }}" id="delete-form-{{ $employee->id }}" class="hidden">
-                    @csrf
-                    @method('DELETE')
-                </form>
-                </div>
-            </div>
-        @endforeach
-    </div>
-    <div class="px-4 py-6 border border-gray-200 hover:border-blue-800 group transition-colors duration-300">
-        {{ $employees->links() }}
-    </div>
 </x-layout>
