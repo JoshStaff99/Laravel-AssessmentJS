@@ -93,12 +93,17 @@ class CompanyController extends Controller
             ->with('success', 'Company updated successfully!');
     }
 
-     public function destroy(Company $company)
-     {
-        //Gate::authorize('edit-company', $companies);
+    public function destroy(Company $company)
+    {
+        // Check if the company has any employees
+        if ($company->employees()->count() > 0) {
+            return redirect('/companies')
+                ->with('error', 'Cannot delete company: employees are assigned to this company.');
+        }
 
         $company->delete();
 
-        return redirect('/companies');  
-     }
+        return redirect('/companies')
+            ->with('success', 'Company deleted successfully!');
+    }
 }

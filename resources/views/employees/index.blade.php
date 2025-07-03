@@ -43,6 +43,10 @@
                         <x-button href="/employees/{{ $employee->id }}">View</x-button>
                         <x-button href="/employees/{{ $employee->id }}/edit">Edit</x-button>
                         <button form="delete-form-{{ $employee->id }}" class="text-red-500 text-sm font-bold bg-red-200 hover:bg-red-600 rounded-md relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 rounded-md" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</button> 
+                        <form id="delete-form-{{ $employee->id }}" action="/employees/{{ $employee->id }}" method="POST" style="display:none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
                     </td>
                 </tr>
             @endforeach

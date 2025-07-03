@@ -3,6 +3,12 @@
         Companies Listings
     </x-slot:heading>
 
+    @if(session('error'))
+        <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div class="relative overflow-x-auto mt-3">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -55,6 +61,10 @@
                         <x-button href="/companies/{{ $company->id }}">View</x-button>
                         <x-button href="/companies/{{ $company->id }}/edit">Edit</x-button>
                         <button form="delete-form-{{ $company->id }}" class="text-red-500 text-sm font-bold bg-red-200 hover:bg-red-600 rounded-md relative inline-flex items-center px-4 py-2 text-sm font-medium leading-5 rounded-md" onclick="return confirm('Are you sure you want to delete this company?')">Delete</button> 
+                        <form id="delete-form-{{ $company->id }}" action="/companies/{{ $company->id }}" method="POST" style="display:none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
                     </td>
                 </tr>
             @endforeach
